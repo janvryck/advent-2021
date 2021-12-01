@@ -9,12 +9,12 @@ class Day00Test {
 
     @Test
     fun partOne() {
-        assertThat(day00.partOne()).isEqualTo("input for day-0")
+        assertThat(day00.partOne()).isEqualTo(3)
     }
 
     @Test
     fun partTwo() {
-        assertThat(day00.partTwo()).isEqualTo("input for day-0")
+        assertThat(day00.partTwo()).isEqualTo(3)
     }
 
 }

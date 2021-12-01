@@ -20,6 +20,14 @@ Run with Gradle, either
 * or a specific `Day`:  
   `./gradlew run --args <day>`
 
+#### Tests
+
+Run tests through the IDE or run with Gradle, either
+* running all tests:  
+  `./gradlew test`
+* or a specific test:  
+  `./gradlew test --tests <testClassName>`
+
 ## Days
 
 ### Day 01 - Sonar Sweep
