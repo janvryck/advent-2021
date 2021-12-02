@@ -1,7 +1,5 @@
 # Advent of Code 2021
-
 ## Set-up
-
 Initial set-up, including:
 
 * `days.Day`,
@@ -12,7 +10,6 @@ Initial set-up, including:
 were adapted from [aoc-kotlin-starter](https://github.com/hughjdavey/aoc-kotlin-starter).
 
 ### Running
-
 Run with Gradle, either
 
 * running all `Days`:   
@@ -21,7 +18,6 @@ Run with Gradle, either
   `./gradlew run --args <day>`
 
 #### Tests
-
 Run tests through the IDE or run with Gradle, either
 * running all tests:  
   `./gradlew test`
@@ -29,11 +25,8 @@ Run tests through the IDE or run with Gradle, either
   `./gradlew test --tests <testClassName>`
 
 ## Days
-
 ### Day 01 - Sonar Sweep
-
 #### Part 1
-
 Consider a sliding window, containing pairs of consecutive elements: count the number of pairs where the second number is higher than the first number.
 
 | Index:       | 1          | 2          | 3          | 4          | 5          | ... |
@@ -47,7 +40,6 @@ Consider a sliding window, containing pairs of consecutive elements: count the n
 * [`count(predicate: (Int) -> Boolean)`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html)
 
 #### Part 2
-
 Expanding upon the method for Part 1:
 
 * Consider a sliding window, containing triplets of consecutive elements:  
@@ -58,3 +50,10 @@ Expanding upon the method for Part 1:
 
 ##### Useful docs/links:
 * [`windowed` retrieval from Collections](https://kotlinlang.org/docs/collection-parts.html#windowed)
+
+### Day 02 - Dive!
+#### Part 1
+Pay attention to the values we are tracking: horizontal position and *depth*. Depth is the inverse of vertical position.
+
+#### Part 2
+Added a `ReferenceFrame` to the position, which modifies its movement behaviour.
