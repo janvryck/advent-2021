@@ -20,8 +20,7 @@ class Day02 : Day(2) {
     }
 
     private fun move(submarine: Submarine) {
-        val instructions = inputList.map { it.split(" ") }.map { Instruction.from(it) }
-        submarine.executeManoeuvres(instructions)
+        submarine.executeManoeuvres(inputList.map { Instruction.from(it) })
     }
 
     private class Submarine private constructor(
@@ -77,7 +76,10 @@ class Day02 : Day(2) {
     ) {
 
         companion object {
-            fun from(textualInstruction: List<String>) = Instruction(Direction.valueOf(textualInstruction[0].uppercase()), textualInstruction[1].toInt())
+            fun from(textualInstruction: String): Instruction {
+                val (direction, units) = textualInstruction.split(" ")
+                return Instruction(Direction.valueOf(direction.uppercase()), units.toInt())
+            }
         }
 
         enum class Direction {

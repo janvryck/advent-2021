@@ -57,3 +57,8 @@ Pay attention to the values we are tracking: horizontal position and *depth*. De
 
 #### Part 2
 Added a `ReferenceFrame` to the position, which modifies its movement behaviour.
+
+##### Useful docs/links
+* [Destructuring](https://kotlinlang.org/docs/destructuring-declarations.html)
+* [Destructuring collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/component1.html)  
+  This was useful for refactoring the factory method for `Instruction`
