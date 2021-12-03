@@ -51,6 +51,26 @@ Expanding upon the method for Part 1:
 ##### Useful docs/links:
 * [`windowed` retrieval from Collections](https://kotlinlang.org/docs/collection-parts.html#windowed)
 
+#### Part 2 - Update
+Refactored _Part 2_ after reading [Anton Arhipov's](https://github.com/antonarhipov) [blog on JetBrains](https://blog.jetbrains.com/kotlin/2021/12/advent-of-code-2021-in-kotlin-day-1/).
+
+There is no need for double sliding windows, since the triplet-sized windows only have 2 values (the first one for window A, last one for window B) not in common. 
+Using a window with size 4, allows us to evaluate the triplet-sized windows in one passing.
+
+| Index:   | 1   | 2   | 3   | 4   | 5   | ... |
+|----------|-----|-----|-----|-----|-----|-----|
+| Original | 199 | 200 | 208 | 210 | 200 | ... | 
+| Window A | 199 | 200 | 208 |     |     | ... |
+| Window B |     | 200 | 208 | 210 |     | ... |
+
+```
+  window A = 199 + 200 + 208 = 607 
+  window B = 200 + 208 + 210 = 618
+  
+  window B - window A = 210 - 199 = 11 
+```
+
+
 ### Day 02 - Dive!
 #### Part 1
 Pay attention to the values we are tracking: horizontal position and *depth*. Depth is the inverse of vertical position.
