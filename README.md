@@ -157,6 +157,7 @@ natural order
 * Group the result by their identity, and count their occurrences
 
 #### Useful docs/links:
+
 * [Progressions](https://kotlinlang.org/docs/ranges.html#progression)
 * [`min`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/min.html) and [`max`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/max.html)
 
@@ -166,11 +167,40 @@ Following the same logic as _Part 1_, but don't remove the `DIAGONAL` entries. C
 using `zip()` made it trivial in the end.
 
 To calculate all points on a diagonal:
+
 * Create a progression from `first.x` to `second.x`  
   Using `downTo` should `first.x > second.x`
 * `Zip` this with a progression from `first.y` to `second.y`  
   `zip` creates pairs of corresponding entries in two lists.
 
 #### Useful docs/links:
+
 * [`downTo`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/down-to.html)
 * [`zip`](https://kotlinlang.org/docs/collection-transformations.html#zip)
+
+### Day 6 - Lanternfish
+
+#### Part 1
+
+* Create a `Map` of _number of fish_ by _days until spawning_
+* Count the number of fish which will spawn: `fishByAge[0]`
+* For each entry:
+    * decrease the _days until spawning_
+    * reset the fish which have just spawned offspring
+    * add an entry for newly spawned fish
+
+| Days until spawn | Initial | Day 1 | Day 2                        | Day 3 | Day 4         |
+|------------------|---------|-------|------------------------------|-------|---------------|
+| 0                | 0       | 1     | 1                            | 2     | 1             |
+| 1                | 1       | 1     | 2                            | 1     | 0             |
+| 2                | 1       | 2     | 1                            | 0     | 0             |
+| 3                | 2       | 1     | 0                            | 0     | 0             |
+| 4                | 4       | 0     | 0                            | 0     | 1             |
+| 5                | 0       | 0     | 0                            | 1     | 1             |
+| 6                | 0       | 0     | **1** (reset after spawning) | **1** | 1 + **2** = 3 |
+| 7                | 0       | 0     | 0                            | 1     | 1             |  
+| 8                | 0       | 0     | **1** (newly spawned)        | **1** | 2             |
+
+#### Part 2
+
+Change from `Map<Int, Int>` to `Map<Int, Long>` since the numbers increased too much.
