@@ -204,3 +204,36 @@ To calculate all points on a diagonal:
 #### Part 2
 
 Change from `Map<Int, Int>` to `Map<Int, Long>` since the numbers increased too much.
+
+### Day 7 - The Treachery of Whales
+
+#### Part 1
+
+* Group the crabs by position
+* For each possible target position between the lowest and highest coordinate
+  * Calculate the distance between the target and each crab position
+  * Multiply the distance by the number of crabs on that position
+  * Sum all these numbers to find the total required fuel consumption
+* Find the lowest resulting fuel consumption
+
+#### Useful docs/links:
+
+* [`minOf`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-of.html)
+* [`sumOf`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sum-of.html)
+
+#### Part 2
+
+**First approach:**  
+After calculating the distance between a target and crab position:
+
+* Create a `Progression` from `1 .. distance`
+* Sum all values in the `Progression`
+
+While this resulted in a working solution, it took over _2.5s_ for calculating the result with the puzzle input.
+
+**Second approach:**
+Use a _Gauss Summation_ for calculating the non-linear fuel consumption. This states that the sum of all natural number from `1 to N` is given by the following
+formula:  
+`S = N * (N+1)/2`
+
+This approach led to a run time of only _24ms_, 2 orders of magnitude quicker.
