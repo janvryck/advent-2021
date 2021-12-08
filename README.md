@@ -237,3 +237,36 @@ formula:
 `S = N * (N+1)/2`
 
 This approach led to a run time of only _24ms_, 2 orders of magnitude quicker.
+
+### Day 8 - Seven Segment Search
+
+#### Part 1
+
+* Split the input on ` | `, retain the second part and split on ` `
+* Count the lengths of all resulting strings
+* Count the number of string of length `2`, `4`, `3` or `7`
+
+#### Part 2
+
+##### Deducing numbers from the signal patterns
+
+I've made up some (probably sub-optimal) rules for deducing all numbers based on the scrambled signal patterns:
+
+* `ONE` has a signal pattern with unique length `2`
+* `FOUR` has a signal pattern with unique length `4`
+* `SEVEN` has a signal pattern with unique length `3`
+* `EIGHT` has a signal pattern with unique length `7`
+* `TWO` is the only pattern which lacks the `f`-segment  
+  Built a frequency of the segments per scrambled pattern,  
+  Filtered the scrambled patterns for the one **not** containing the most frequent segment
+* `THREE` is the only remaining pattern of length `5`, containing all segments of `SEVEN`
+* `FIVE` is the only remaining pattern of length `5`
+* `ZERO` is the only remaining pattern which does **not** contain all segments of `FIVE`
+* `NINE` is the only remaining pattern which contains all segments of `SEVEN`
+* `SIX` is the only remaining pattern
+
+#### Determine the unscrambled display values
+
+* for a display value, find the deduced pattern which:
+  * has the same length
+  * has the same segments
