@@ -17,10 +17,11 @@ repositories {
 }
 
 dependencies {
-    implementation("org.slf4j:slf4j-simple:1.7.9")
+    implementation("org.slf4j:slf4j-simple:1.7.32")
     implementation("org.reflections:reflections:0.10.2")
 
     testImplementation("org.assertj:assertj-core:3.21.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
     testImplementation(kotlin("test"))
 }
 
