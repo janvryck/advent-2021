@@ -31,7 +31,7 @@ Run tests through the IDE or run with Gradle, either
 
 ## Days
 
-### Day 01 - Sonar Sweep
+### Day 1 - Sonar Sweep
 
 #### Part 1
 
@@ -82,7 +82,7 @@ common. Using a window with size 4, allows us to evaluate the triplet-sized wind
   window B - window A = 210 - 199 = 11 
 ```
 
-### Day 02 - Dive!
+### Day 2 - Dive!
 
 #### Part 1
 
@@ -98,21 +98,21 @@ Added a `ReferenceFrame` to the position, which modifies its movement behaviour.
 * [Destructuring collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/component1.html)  
   This was useful for refactoring the factory method for `Instruction`
 
-### Day 03 - Binary Diagnostic
+### Day 3 - Binary Diagnostic
 
-### Part 1
+#### Part 1
 
 * Create a `List` of `Char[]`
 * Determine the occurrences per character for `Char[].indices`
 * Find the max occurence per index
 
-#### Useful docs/links:
+##### Useful docs/links:
 
 * [Grouping collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-grouping/)
 * [`eachCount`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/each-count.html)
 * Convert a binary string to an `Int` using [`.toInt(radix)`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
 
-### Part 2
+#### Part 2
 
 * Refactored to `Diagnostics` (`List`) and `Diagnostic` (`Char[]`)
 * Split the logic into:
@@ -120,7 +120,7 @@ Added a `ReferenceFrame` to the position, which modifies its movement behaviour.
     * Finding the highect occurrence
     * Filtering eacht `Diagnostic` by the most/least common character
 
-_Pitfall_: Finding the max occurence should default to `1` if both `1` and `0` occur equally. Solved this by sorting the `Map` of occurrences by reversed
+_Pitfall_: Finding the max occurrence should default to `1` if both `1` and `0` occur equally. Solved this by sorting the `Map` of occurrences by reversed
 natural order
 
 ### Day 4 - Giant Squid
