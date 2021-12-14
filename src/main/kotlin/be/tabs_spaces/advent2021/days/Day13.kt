@@ -7,14 +7,9 @@ class Day13 : Day(13) {
 
     private val transparentPaper = TransparentPaper.parse(inputList)
 
+    override fun partOne() = transparentPaper.fold(1).size
 
-    override fun partOne(): Any {
-        return transparentPaper.fold(1).size
-    }
-
-    override fun partTwo(): Any {
-        return transparentPaper.fold().visualize()
-    }
+    override fun partTwo() = transparentPaper.fold().visualize()
 
     class TransparentPaper private constructor(
         private val dots: List<Point>,
