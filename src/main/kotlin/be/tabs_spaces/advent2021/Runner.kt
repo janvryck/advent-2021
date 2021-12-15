@@ -13,12 +13,11 @@ object Runner {
     private val reflections = Reflections("be.tabs_spaces.advent2021.days")
 
     @JvmStatic
-    fun main(args: Array<String>) {
+    fun main(args: Array<String> = arrayOf("15")) {
         if (args.isNotEmpty()) {
             val day = try {
                 args[0].toInt()
-            }
-            catch (e: NumberFormatException) {
+            } catch (e: NumberFormatException) {
                 printError("Day argument must be an integer")
                 return
             }
