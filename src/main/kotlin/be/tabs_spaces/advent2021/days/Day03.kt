@@ -18,8 +18,8 @@ class Day03 : Day(3) {
     class Diagnostics private constructor(private val diagnostics: List<Diagnostic>) {
         private val size
             get() = diagnostics.size
-        private val maxGammaRate by lazy { (2.0.pow(maxOccurrencesPerIndex().size) - 1).toInt() }
 
+        private val maxGammaRate by lazy { (2.0.pow(maxOccurrencesPerIndex().size) - 1).toInt() }
         val gammaRate by lazy { maxOccurrencesPerIndex().decimal }
         val epsilonRate by lazy { maxGammaRate - gammaRate }
 

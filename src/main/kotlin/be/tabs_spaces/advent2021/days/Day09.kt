@@ -17,7 +17,7 @@ class Day09 : Day(9) {
         private val maxX = (yXZMap[0]?.size ?: -1).dec()
 
         fun findLowPoints(): List<Pair<Int, Int>> {
-            return yXZMap.entries.flatMap { (y, xz) -> xz.entries.filter { (x, z) -> isLowPoint(x, y, z) }.map { y to it.key } }
+            return yXZMap.entries.flatMap { (y, xz) -> xz.entries.filter { (x, z) -> isLowPoint(x, y, z) }.map { (x, _) -> y to x } }
         }
 
         fun heightAt(yX: Pair<Int, Int>) = yXZMap[yX.first]!![yX.second]!!
@@ -26,8 +26,7 @@ class Day09 : Day(9) {
 
         private fun higherBasinPointsAround(point: Pair<Int, Int>): Set<Pair<Int, Int>> {
             return setOf(point) + neighbouringPoints(point)
-                .filter { heightAt(it) < 9 }
-                .filter { heightAt(it) > heightAt(point) }
+                .filter { heightAt(it) in heightAt(point).inc() until 9 }
                 .flatMap { higherBasinPointsAround(it) }
                 .toSet()
         }

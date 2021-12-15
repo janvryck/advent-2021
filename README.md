@@ -123,6 +123,14 @@ Added a `ReferenceFrame` to the position, which modifies its movement behaviour.
 _Pitfall_: Finding the max occurrence should default to `1` if both `1` and `0` occur equally. Solved this by sorting the `Map` of occurrences by reversed
 natural order
 
+##### `by lazy { }`
+
+Added lazy initialization of the values from _Part 1_ in order to only calculate them when needed for _Part 1_.
+
+##### Useful docs/links:
+
+* [`Lazy properties`](https://kotlinlang.org/docs/delegated-properties.html#lazy-properties)
+
 ### Day 4 - Giant Squid
 
 #### Part 1
@@ -211,9 +219,9 @@ Change from `Map<Int, Int>` to `Map<Int, Long>` since the numbers increased too 
 
 * Group the crabs by position
 * For each possible target position between the lowest and highest coordinate
-  * Calculate the distance between the target and each crab position
-  * Multiply the distance by the number of crabs on that position
-  * Sum all these numbers to find the total required fuel consumption
+    * Calculate the distance between the target and each crab position
+    * Multiply the distance by the number of crabs on that position
+    * Sum all these numbers to find the total required fuel consumption
 * Find the lowest resulting fuel consumption
 
 #### Useful docs/links:
@@ -268,5 +276,127 @@ I've made up some (probably sub-optimal) rules for deducing all numbers based on
 #### Determine the unscrambled display values
 
 * for a display value, find the deduced pattern which:
-  * has the same length
-  * has the same segments
+    * has the same length
+    * has the same segments
+
+### Day 9 - Smoke Basin
+
+#### Part 1
+
+For each coordinate:
+
+* Fetch the neighbours
+    * When the coordinate has 0 of max value for X or Y:  
+      Filter the lower/higher X/Y values
+* Fetch the heights of each neighbour
+* Determine lowest neighbouring height
+* Retain coordinates with lower height than **all** of its neighbours  
+  Height should be lower, not lower or equal
+
+#### Part 2
+
+* Fetch the lowest points from the Part 1
+* For each point: (1)
+    * add the point to a Set
+    * retrieve all its neighbours
+        * filter points with height > original point and height < 9
+        * recurse to point (1):  
+          Recursion will stop whenever an edge point (height 9) occurs
+
+### Day 10 - Syntax Scoring
+
+#### Part 1
+
+* Loop through the characters on each line
+* If the next character is:
+    * An opening character:  
+      Push it to a stack
+    * A closing character:  
+      If the character matches the last opening character on the stack:
+        * pop the last character from the stack
+        * else, return the character  
+          This is the first illegal character on that line.
+* Map each illegal character to its score and reduce to their sum
+
+##### `Stack` in Kotlin
+
+There is no `Stack` in Kotlin, but a `MutableList` can be used for emulating this behaviour:
+
+| `Stack` | `MutableList` |
+|---------|---------------|
+| `#push` | `#add`        |  
+| `#pop`  | `#removeLast` |
+| `#peek` | `#last`       |
+
+#### Part 2
+
+* Build the same stack as in Part 1, but:
+    * Drop the code line when an illegal character occurs, since this is not a autocomplete error
+* The remaining entries for each line, are opening characters with missing closing characters
+
+### Day 11 - Dumbo Octopus
+
+#### Part 1
+
+Iterate `100` times over the grid of octopuses. For each iteration:
+
+* Increase all energy levels
+* Generate a `Sequence<Int>`, for each item in the sequence:
+    * Count the number of octopuses with `energyLevel == 10`
+    * For each octopus with `energyLevel == 10`:
+        * Increment `energyLevel`  (will be `> 10`)
+        * For each neighbour with `energyLevel != 10`: Increment `energyLevel`
+
+  This `Sequence` will propagate all flashes, until an octopus has either flashes (`energyLevel > 10`) or will not flash in this iteration (`energyLevel < 10`).
+  It stops when the `Sequence` generator return zero.
+* Sum the result of the `Sequence`
+* For each octopus that flashed (`energyLevel > 10`): Reset `energyLevel` to zero
+
+##### Useful docs/links:
+
+* [Sequences](https://kotlinlang.org/docs/sequences.html)
+
+#### Part 2
+
+* Generate a `Sequence` from the iteration in _Part 1_
+* Keep generating while the result of one iteration `< 100`
+* Count the number of iterations, incrementing it by one, since that iteration is the first to reach 100 flashes
+
+### Day 12 - Passage Pathing
+
+#### Part 1
+
+* Build a `Map` which links each `Cave` to all directly accessible caves  
+  Drop the `start`-`Cave` from all accessible caves
+* Make a list containing just the `start`-cave
+* Iterate over this `List`: (1)
+    * For each accessible cave from the last element in the list:  
+      Create a new list, appending the accessible cave
+    * If:
+        * we appended the `end`
+
+##### Useful docs/links:
+
+#### Part 2
+
+##### Useful docs/links:
+
+### Day 13 -
+
+#### Part 1
+
+##### Useful docs/links:
+
+#### Part 2
+
+##### Useful docs/links:
+
+### Day 14 -
+
+#### Part 1
+
+##### Useful docs/links:
+
+#### Part 2
+
+##### Useful docs/links: 
