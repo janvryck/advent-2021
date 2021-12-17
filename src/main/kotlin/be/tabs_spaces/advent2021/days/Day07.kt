@@ -1,5 +1,6 @@
 package be.tabs_spaces.advent2021.days
 
+import be.tabs_spaces.advent2021.util.sumToNFromOne
 import kotlin.math.abs
 
 class Day07 : Day(7) {
@@ -21,7 +22,5 @@ class Day07 : Day(7) {
         fun linearConsumptionTo(targetCoordinate: Int) = distanceTo(targetCoordinate).times(crabs)
 
         fun risingConsumptionTo(targetCoordinate: Int) = distanceTo(targetCoordinate).sumToNFromOne().times(crabs)
-
-        private fun Int.sumToNFromOne() = this * (this + 1) / 2
     }
 }
